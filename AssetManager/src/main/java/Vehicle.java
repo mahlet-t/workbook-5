@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Vehicle extends Asset {
     private String makeModel;
     private int year;
@@ -37,20 +39,22 @@ public class Vehicle extends Asset {
 
     @Override
     public double getValue() {
+        int currentYear= LocalDate.now().getYear();
+        int age=currentYear-year;
         double value=0;
-        if (year>=0&&year<=3){
-            value=getOriginalCost()-(0.03*getOriginalCost()*year);
+        if (age>=0 && age<=3){
+            value=getOriginalCost()-(0.03*getOriginalCost()*age);
         }
-        else if (year>=4&&year<=6){
-            value=getOriginalCost()-(0.06*getOriginalCost()*year);
+        else if (age>=4 && age<=6){
+            value=getOriginalCost()-(0.06*getOriginalCost()*age);
         }
-        else if (year>=7&&year<=10){
-            value=getOriginalCost()-(0.08*getOriginalCost()*year);
+        else if (age>=7 && age<=10){
+            value=getOriginalCost()-(0.08*getOriginalCost()*age);
         }
-        else if (year>10){
+        else if (age>10){
             value=getOriginalCost()-1000.00;
         }
-        if (odometer>100000&&!makeModel.contains("Honda")&&!makeModel.contains("Toyota")){
+        if (odometer>100000 && !makeModel.contains("Honda") && !makeModel.contains("Toyota")){
             value=value-(0.25*value);
         }
         return value;
