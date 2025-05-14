@@ -12,6 +12,8 @@ public class Main {
         Vehicle truck=new Vehicle("Tom's truck","January 1 2023",80000,"Ford",3,45000);
         assets.add(car);
         assets.add(truck);
+        Cash emergencyFund=new Cash("Emergency Fund","May 14 2025",5000.00);
+        assets.add(emergencyFund);
         for (Asset asset:assets){
             System.out.println(asset.getDescription());
             System.out.println(" Date: "+asset.getDateAcquired());
@@ -28,6 +30,7 @@ public class Main {
                 System.out.println("...........................................");
 
             }
+
         }
     }
 
